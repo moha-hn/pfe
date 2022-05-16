@@ -78,7 +78,6 @@ class commentaire (models.Model):
 
 class note (models.Model):
     note=models.FloatField(validators=[MinValueValidator(0),MaxValueValidator(20)])
-    etudiant_note=models.ForeignKey("etudiant", on_delete=models.CASCADE)
     enseignant=models.ForeignKey("enseignant", on_delete=models.CASCADE )
     def __str__(self):
          return self.note
