@@ -10,7 +10,6 @@ class administration (models.Model):
         return self.nom
 
 class enseignant (models.Model):
-    nom_utilisateur=models.CharField(max_length=50, primary_key=True)
     nom=models.CharField(max_length=20)
     prenom=models.CharField(max_length=20)
     SPECIALITE  = [
@@ -30,7 +29,6 @@ class section (models.Model):
         return self.nom
 
 class etudiant (models.Model):
-    nom_utilisateur=models.CharField(max_length=50, primary_key=True)
     nom=models.CharField( max_length=50)
     prenom=models.CharField( max_length=50) 
     section=models.ForeignKey("section", on_delete=models.CASCADE)
@@ -52,7 +50,7 @@ class publication (models.Model):
     publieur=models.ForeignKey("enseignant", on_delete=models.CASCADE)
     image=models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100,blank=True)
     def __str__(self):
-        return self.publieur
+        return str(self.publieur)
 
 class module (models.Model):
     nom=models.CharField(max_length=50)
@@ -72,12 +70,12 @@ class commentaire (models.Model):
     enseignant=models.ForeignKey("enseignant", on_delete=models.CASCADE,blank=True)
     etudiant=models.ForeignKey("etudiant", on_delete=models.CASCADE,blank=True)
     date=models.DateField(default=timezone.now() ,editable=False)
-    heure=models.TimeField(default=timezone.now())
+    heure=models.TimeField(default=timezone.now(),editable=False)
     def __str__(self):
-        return str(self.publieur)
+        return str(self.enseignant)
 
 class note (models.Model):
     note=models.FloatField(validators=[MinValueValidator(0),MaxValueValidator(20)])
     enseignant=models.ForeignKey("enseignant", on_delete=models.CASCADE )
     def __str__(self):
-         return self.note
+         return str(self.note)
