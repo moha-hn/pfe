@@ -1,0 +1,235 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+img
+{
+    text-align: center;
+    position: relative;
+    max-width: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+figcaption
+{
+    font-family:'Times New Roman', Times, serif;
+    font-weight: 500;
+    text-align: center;
+}
+
+h1
+{
+    text-align: center;
+}
+/*accueil links*/
+.b
+{
+    background-color: #E8F3F0;
+}
+.container 
+{
+    position: relative;
+    width: 50%;
+    margin-left:25%;
+    margin-right:25%;
+    margin-top: 40px;
+}
+  
+.image 
+{
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+  
+.middle 
+{
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%)
+}
+  
+.container:hover .image 
+{
+    opacity: 0.3;
+}
+  
+.container:hover .middle 
+{
+    opacity: 1;
+}
+  
+.text 
+{
+    background-color: aqua;
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
+    
+}
+.text:hover{
+    
+    background-color:#008080;
+    transition: 1s;
+}
+
+
+/*header accueil*/
+
+
+/*li text*/
+.lib
+{
+    font-weight: bold;
+    font-size: large;
+    color: #7FB3D5;
+
+}
+.lib2
+{
+    font-weight: 600;
+    font-size: medium;
+    color: #7FB3D5;
+
+}
+.h
+{
+    color: #7FB3D5;
+}
+/*text*/
+.course{
+    margin: 15%;
+    padding: 100px; 
+    background-color: white; 
+    text-align: left;  
+}
+
+/*boutton accueil*/
+.btn{
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 13px 34px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+}
+.btn:hover{
+    border: 1px solid aqua;
+    background-color:aqua;
+    transition: 1s;
+}
+/*  footer*/
+footer
+{
+    text-align: center;
+    color :white;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #222;
+    clear: both;
+    position: relative;
+    height: 20px;
+    margin-top: -20px;
+    padding: 5%;
+}
+
+/*menu deroulant*/
+.menu-bar
+{
+    text-align: center;
+}
+
+.menu-bar ul
+{
+    display: inline-flex;
+    list-style: none;
+    color: white;
+}
+.menu-bar ul li
+{
+    width: 120px;
+    margin: 15px;
+    padding: 10px;
+}
+.menu-bar ul li a
+{
+    text-decoration: none;
+    color:#fff;
+}
+.menu-bar ul li :hover
+{
+    color: #105DF6 ;
+    border-radius: 3px;
+    
+}
+.sub-menu-1
+{
+    display: none;
+}
+.menu-bar ul li:hover .sub-menu-1
+{
+    display: block;
+    position :absolute;
+    margin-top: 15px;
+    margin-left: -15px;
+}
+.menu-bar ul li:hover .sub-menu-1 ul
+{
+    display: block;
+    margin: 10 px;
+}
+.menu-bar ul li:hover .sub-menu-1 ul li
+{
+    width:150px;
+    padding:9px;
+    border-bottom:1px dotted white;
+    background: transparent;
+    border-radius: 0;
+    text-align: left;
+
+}
+.menu-bar ul li:hover .sub-menu-1 ul li:last-child
+{
+    border-bottom: none;
+}
+/*textbox accuei*/
+.textbox{
+    width: 90%;
+    color:aqua;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+
+}
+.textbox h1{
+    font-size: 50px;
+
+}
+.textbox p{
+    margin: 10px 0 40px;
+    font-size: 17px;
+    color: white;
+}
+
+
+
+
+
+	  
+
+

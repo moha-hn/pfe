@@ -1,0 +1,145 @@
+
+{% load static %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <style>
+    input, select {
+      width: 60%;
+      padding: 8px 8px;
+      margin-left: 5%;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+  </style>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Messagerie</title>
+    <link rel="stylesheet" href="{% static 'css/bulma.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styl.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <title>Admin</title>
+      <!-- plugins:css -->
+      <link rel="stylesheet" href="{% static 'assets/vendors/mdi/css/materialdesignicons.min.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/vendors/flag-icon-css/css/flag-icon.min.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/vendors/css/vendor.bundle.base.css' %}">
+      <!-- endinject -->
+      <!-- Plugin css for this page -->
+      <link rel="stylesheet" href="{% static 'assets/vendors/jquery-bar-rating/css-stars.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/vendors/font-awesome/css/font-awesome.min.css' %}" >
+      <!-- End plugin css for this page -->
+      <!-- inject:css -->
+      <!-- endinject -->
+      <!-- Layout styles -->
+      <link rel="stylesheet" href="{% static 'assets/css/demo_1/style.css' %}" />
+      <!-- End layout styles -->
+      <link rel="shortcut icon" href="{% static 'assets/images/favicon.png' %}" />
+    </head>
+  </head>
+{% block content %}
+ 
+    <div class="columns is-mobile">
+    
+
+    <div class="column is-one-quarter">
+     <br>
+    <aside class="menu">
+      <a href="{% url 'home' %}" style="text-decoration:none; margin-left:10%"class="button is-warning">Retour a l'accueil</a>
+      <br><br>
+      <h1 style="margin-left:10%">
+      Messagerie
+    </h1>
+    <br>
+    <ul style="overflow-y: scroll; height: 300px" class="menu-list">
+
+    {% for message in messages %}
+
+    <a class="{% if active_direct == message.user.username %}is-active{% endif %}" href="{% url 'directs' message.user.username %}">
+    <div class="box" >
+      <article class="media" >
+        
+        <div class="media-content" >
+
+          <div class="content">
+            <p>
+              <strong style="color:#0087E1">{{ message.user.nom}} {{ message.user.prenom }}</strong> <small>@{{ message.user.username }}</small>
+            </p>
+          </div>
+
+          <div class="content">
+            {% if message.unread %}
+            <p style="font-weight: bold; color: red;">
+              <i class="material-icons">mark_chat_unread</i> {{ message.unread }}
+            </p>
+            {% endif %}        
+          </div>
+
+        </div>
+      </article>
+    </div>
+    </a>
+    {% endfor %}
+
+      </ul>
+      </aside>
+    <br>
+    <a href="{% url 'usersearch' %}" style="text-decoration:none; margin-left:10%"class="button is-primary">Nouveau message</a>
+    <br><br>
+    
+
+    </div>
+
+    <div class="column">
+      <br><br><br>
+    <div style="overflow-y: scroll; height: 400px; scrollbar-color: black;
+    scrollbar-width: thin;">
+  
+    {% for direct in directs %}
+    <div class="box"  style="margin-left:20px;width:600px;">
+      <article class="media">
+        <div class="media-left">
+        </div>
+        <div class="media-content">
+          <div class="content" >
+            <p>
+              <strong style="color:#0087E1">{{ direct.sender.nom }} {{ direct.sender.prenom }}</strong> <small>@{{ direct.sender.username }}</small> on: <strong><small>{{ direct.date|date:'N d G:i'}}</small></strong>
+            </p>
+            {{ direct.body }} 
+          </div>
+        </div>
+      </article>
+    </div>
+    {% endfor %}
+
+
+    </div>
+
+    <br>
+    <form role="form" method="POST" action="{% url 'send_direct' %}">
+      {% csrf_token %}
+    <article class="media">
+      <div class="media-content">
+        <input type="hidden" name="to_user" value="{{ active_direct }}">
+        <div class="field">
+          <p class="control">
+            <input  name="body" placeholder="Entrez votre message..."></input>
+            <button type="submit" name="action" class="button is-info">Envoyer</button>
+          </p>
+        </div>
+        
+            
+      </div>
+    </article>
+    </form>
+
+    </div>
+    </div>   
+{% endblock %}

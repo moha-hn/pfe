@@ -1,0 +1,12 @@
+{% autoescape off %}
+
+Bonjour {{user.username}} ,
+
+Nous vous remercions vivement pour la confiance que vous nous accorder
+
+Veuillez vérifier votre compte en cliquant sur le lien ci-dessous:
+
+http://{{domain}}{% url 'activate' uidb64=uid token=token %}
+
+
+{% endautoescape %}

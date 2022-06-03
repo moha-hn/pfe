@@ -1,0 +1,50 @@
+{% extends 'baseetd.html' %}
+
+{% load static %}
+
+{% block content %}
+  <style>
+    input, select {
+      width: 100%;
+      padding: 8px 8px;
+      margin-left: 140%;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-right:0;
+    }
+  </style>
+ 
+
+  <br><br>
+    <form>
+      <input name="q" type="text" placeholder="rechercher utilisateur..."value="{{ request.GET.q }}">
+
+      <button type="submit" class="button is-info" style="margin-left:175%;margin-top:5%">Search</button>
+    </form>
+
+
+
+
+  <div class="column is-one-quarter" style="margin-left:150%;width:80%">
+
+    {% for user in users %}
+    <div class="box" >
+      <center><article class="media">
+        
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong >{{ user.nom }} {{ user.prenom }}</strong><small>@{{ user.username }}</small>
+            </p>
+            <a href="{% url 'newconversation' user.username %}" style="text-decoration:none"class="button is-primary">Envoyer un message</a>
+          </div>
+        </div>
+      </article></center>
+    </div>
+    {% endfor %}
+    
+
+  </div>
+
+{% endblock %}

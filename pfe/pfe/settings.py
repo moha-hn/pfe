@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-s50640d!w4w1(p4o9^o)nvde@8)=0tj&qp*#*5dl#7we_1x$k!
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+AUTH_USER_MODEL='gestion.user'
 
 # Application definition
 
@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'gestion'
+    'gestion',
+    'ckeditor',
+    'ckeditor_uploader',
+    'direct'
 ]
 
 MIDDLEWARE = [
@@ -114,13 +117,29 @@ USE_L10N = True
 
 USE_TZ = True
 
+# EMAIL CONFIG
+
+EMAIL_FROM_USER='classtech@yahoo.com'
+EMAIL_HOST = 'smtp.yahoo.fr'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'classtech@yahoo.com'
+EMAIL_HOST_PASSWORD = 'Mouloudia1921'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
+STATICFILES_DIR=[os.path.join(BASE_DIR,'media'),]
+MEDIA_URL = '/media/'
 
+# Path where media is stored
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+# 3rd party apps
+CKEDITOR_UPLOAD_PATH="uploads/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

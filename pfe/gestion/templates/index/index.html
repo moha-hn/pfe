@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <style>
+        .header{
+            min-height: 100vh;
+            width: 100%;
+            background-image:linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(static/images/admin.jpg);
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            margin-bottom: 25 px;
+        }
+    </style>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    <title>accueil</title>
+</head>
+<body>
+    <header class="header">
+        <div class="textbox">
+            <h1>L'ENSEIGNEMENT REVISITÉ</h1>
+            <br>
+            <p> 
+                L'enseignement comme vous ne l'aviez jamais vue auparavant.<br>
+                Redécouvrez le bonheur d'enseigner grace a un espace de travail innovant, réalisé sur mesure pour vous.
+            </p>
+            <a class="btn" href="#ici"> Get Started</a>
+
+        </div>
+
+    </header>
+
+    <main class="b" id="ici">
+        <br>
+        <div class="container">
+            <img src="{%static 'images/admin.jfif'%}" class="image" style="width:100%">
+            <div class="middle">
+                <div class="text"> 
+                  <a href="{%url 'loginadmin'%}" style="text-decoration: none; color: white;"> Administration</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <img src="{%static 'images/enseignant.jpg'%}" class="image" style="width:100%">
+            <div class="middle">
+                <div class="text"> 
+                  <a href="{%url 'loginens'%}" style="text-decoration: none; color: white;">Enseignant</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <img src="{%static 'images/etudiant.jpg'%}" class="image" style="width:100%">
+            <div class="middle">
+                <div class="text"> 
+                  <a href="{%url 'loginetd'%}" style="text-decoration: none; color: white;"> Étudiant</a>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+    </main>
+   
+    
+    
+</body>
+</html>

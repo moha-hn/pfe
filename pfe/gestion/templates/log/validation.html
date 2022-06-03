@@ -1,0 +1,10 @@
+<form method="POST">  
+    {% csrf_token %}
+    {{form}}
+
+  <button class="button">add</button>
+
+
+</form>  
+
+<center><a href={% url 'gestion' %} type="button" class="btn btn-outline-danger">return</a> </center>
